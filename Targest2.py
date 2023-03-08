@@ -825,3 +825,4 @@ def toggle_state5(): # this will re-enable excel report button for orphan tags
 
 def toggle_state6(): # this will re-enable allTags report button for tables
     Gui.allTagsButton.config(state="normal")
+
