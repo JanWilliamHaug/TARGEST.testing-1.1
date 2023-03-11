@@ -28,7 +28,7 @@ def run_tests():
 
 
 if __name__ == "__main__" :
-    # run_tests()
+    
     Targest2.generateReport() # Calls the generateReport function from the Gui.py file
     Targest2.generateReport2() # Calls the generateReport2 function from the Gui.py file
     Targest2.getDocumentTable() 
@@ -36,4 +36,5 @@ if __name__ == "__main__" :
     Targest2.createExcel()
     Targest2.orphanGenReport()
     Targest2.getOrphanDocument()
+    # run_tests()
 
