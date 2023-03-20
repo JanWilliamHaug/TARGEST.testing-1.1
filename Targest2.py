@@ -600,6 +600,7 @@ def generateReport2():
 
                                         else:
                                             print("Requirement text not found")
+                                            orphanChildren2Copy.append(str(keyCheck4))
                                             #report3.add_paragraph("Requirement text not found")
                                             #orphanReport.add_paragraph("Requirement text not found")
                                         #print(dicts10[str(key)])
@@ -717,6 +718,7 @@ def generateReport2():
 
                                     else:
                                         print("Requirement text not found")
+                                        orphanChildren2Copy.append(str(keyCheck4))
                                         #report3.add_paragraph("Requirement text not found")
                                         #orphanReport.add_paragraph("Requirement text not found")
                                     #print(dicts10[str(key)])
@@ -1132,3 +1134,7 @@ def removechild(text): #removes child, this one needs fixing
     else:
         # Log a success message
         logging.info('removechild(): PASS')
+
+
+
+
