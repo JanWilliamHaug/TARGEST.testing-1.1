@@ -620,7 +620,10 @@ def generateReport2():
                                                 hx = tag
                                                 #report3.add_paragraph("I'm here")
     
-                                                keys = [h for h, v in dicts10.items() if hx in v] # finds all the child tags
+                                                keys = [h for h, v in dicts10.items() if check_string(hx, v)] # finds all the child tags
+                                                #for h, v in dicts10.items():
+                                                 #   print("hx", hx)
+                                                  #  print("v", v)
                                                 #report3.add_paragraph("I'm keys")
                                                 #report3.add_paragraph(keys)
                                                 k += 1
@@ -739,7 +742,10 @@ def generateReport2():
                                             duplicates.append(str(hx))
                                             #report3.add_paragraph(str(hx))
                                             
-                                            keys = [h for h, v in dicts10.items() if hx in v]
+                                            keys = [h for h, v in dicts10.items() if check_string(hx, v)]
+                                            #for h, v in dicts10.items():
+                                             #       print("hx", hx)
+                                              #      print("v", v)
                                             # finds all the child tags
                                             #print(keys)
                                             k += 1
@@ -955,7 +961,10 @@ def orphanGenReport():
                                                 i += 1
                                                 hx = tag
                                                 #report3.add_paragraph("I'm here")
-                                                keys = [h for h, v in dicts10.items() if hx in v] # finds all the child tags
+                                                keys = [h for h, v in dicts10.items() if check_string(hx, v)] # finds all the child tags
+                                                #for h, v in dicts10.items():
+                                                 #   print("hx", hx)
+                                                  #  print("v", v)
                                                 #report3.add_paragraph("I'm keys")
                                                 #report3.add_paragraph(keys)
                                                 k += 1
@@ -1009,7 +1018,10 @@ def orphanGenReport():
                                     if b == dicts10[str(stringKey2)]:
                                         i += 1
                                         hx = dicts10[str(stringKey2)]
-                                        keys = [h for h, v in dicts10.items() if v == hx] # finds all the child tags
+                                        keys = [h for h, v in dicts10.items() if check_string(hx, v)] # finds all the child tags
+                                        #for h, v in dicts10.items():
+                                         #           print("hx", hx)
+                                          #          print("v", v)
                                         #print(keys)
                                         k += 1
                                         for item in keys: #keys are child tags of hx/the parent tag
@@ -1135,6 +1147,14 @@ def removechild(text): #removes child, this one needs fixing
         # Log a success message
         logging.info('removechild(): PASS')
 
+def check_string(string1, string2): # checks if a string is in another string
+    if isinstance(string2, list):
+        string2 = ''.join(string2)
+    if string1 in string2:
+        index = string2.find(string1)
+        if index < len(string2) - len(string1) and not string2[index+len(string1)].isdigit():
+            return True
+    return False
 
 
 
