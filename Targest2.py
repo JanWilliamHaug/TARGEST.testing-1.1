@@ -499,6 +499,7 @@ def generateReport2():
         i = 0
         o = 0
         z = 0
+        #print("here is dicts10:", dicts10)
 
         orphanTagText = removechild(filtered_LCopy)
 
@@ -621,6 +622,9 @@ def generateReport2():
                                                 #report3.add_paragraph("I'm here")
     
                                                 keys = [h for h, v in dicts10.items() if check_string(hx, v)] # finds all the child tags
+                                                
+
+                                                
                                                 #for h, v in dicts10.items():
                                                  #   print("hx", hx)
                                                   #  print("v", v)
@@ -628,6 +632,7 @@ def generateReport2():
                                                 #report3.add_paragraph(keys)
                                                 k += 1
                                                 for item in keys: #keys are child tags of hx/the parent tag
+                                                    
 
                                                     if item != "" and item!= " ":
                                                         print("child: ", item)
@@ -735,7 +740,7 @@ def generateReport2():
                                             i += 1
                                             text.strip()
                                             
-                                            hx = text
+                                            hx = str(text)
                                             hx = hx.replace('[', '')
                                             hx = hx.replace(']', '')
                                             
@@ -743,6 +748,7 @@ def generateReport2():
                                             #report3.add_paragraph(str(hx))
                                             
                                             keys = [h for h, v in dicts10.items() if check_string(hx, v)]
+                                            
                                             #for h, v in dicts10.items():
                                              #       print("hx", hx)
                                               #      print("v", v)
@@ -799,8 +805,31 @@ def generateReport2():
                     #elif k < len(fullText2Copy) and fullText2Copy[k] in filtered_LCopy:
                     elif k < len(fullText2Copy) and fullText2Copy[k] in filtered_LCopy:
                         k += 1
+                        
                         #report3.add_paragraph("\n")
-                        if i < len(parents2Copy):
+                        if 1 ==1:
+                            for orphantag in orphanChildren2Copy:
+                                
+                                if orphantag in dicts10:
+                                    print("orphantag: ", orphantag)
+                                    if orphantag not in duplicates:
+                                        kek = 0
+                                            #print("orphan parent tag: ", orphantag)
+                                            #hx = orphantag
+                                            #hx = hx.replace('[', '')
+                                            #hx = hx.replace(']', '')
+                        
+                                            #duplicates.append(str(hx))
+                                            #report3.add_paragraph(str(hx))
+                                            
+                                            #keys = [h for h, v in dicts10.items() if check_string(hx, v)]
+                                            #for item in keys: #keys are child tags of hx/the parent tag
+
+                                             #   if item != "" and item!= " ":
+                                              #      print("child: ", item)
+                                               #     print(dicts2Copy[str(item)])
+
+
                             #report3.add_paragraph(parents2Copy[i])
                             #orphanReport.add_paragraph(parents2Copy[i])
                             #paragraph2.add("\n" +parents2Copy[i] + " Is an orphanTag" + "\n")
@@ -848,6 +877,7 @@ def generateReport2():
         
 
         orphanGenReport()
+        #print("dicts10", dicts10)
 
 
         
@@ -959,7 +989,7 @@ def orphanGenReport():
 
                                             if b == tag:
                                                 i += 1
-                                                hx = tag
+                                                hx = str(tag)
                                                 #report3.add_paragraph("I'm here")
                                                 keys = [h for h, v in dicts10.items() if check_string(hx, v)] # finds all the child tags
                                                 #for h, v in dicts10.items():
@@ -1017,8 +1047,9 @@ def orphanGenReport():
 
                                     if b == dicts10[str(stringKey2)]:
                                         i += 1
-                                        hx = dicts10[str(stringKey2)]
+                                        hx = str(dicts10[str(stringKey2)])
                                         keys = [h for h, v in dicts10.items() if check_string(hx, v)] # finds all the child tags
+                                        
                                         #for h, v in dicts10.items():
                                          #           print("hx", hx)
                                           #          print("v", v)
@@ -1147,14 +1178,20 @@ def removechild(text): #removes child, this one needs fixing
         # Log a success message
         logging.info('removechild(): PASS')
 
-def check_string(string1, string2): # checks if a string is in another string
-    if isinstance(string2, list):
-        string2 = ''.join(string2)
-    if string1 in string2:
-        index = string2.find(string1)
-        if index < len(string2) - len(string1) and not string2[index+len(string1)].isdigit():
+
+
+def check_string(string1, string2): # checks if a string1 is in string2
+    if isinstance(string2, str): 
+        string2 = [string2]
+    pattern = r'{}(?!\d)'.format(re.escape(string1))
+    for s in string2:
+        match = re.search(pattern, s)
+        if match is not None:
             return True
     return False
+
+
+
 
 
 
