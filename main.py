@@ -1,13 +1,10 @@
 import Targest2 # Imports the Gui.py file
-
-
-
 import unittest
 import docx
 import re
 class TestTags(unittest.TestCase):
     def test_tags(self):
-        doc = docx.Document('report3.docx')
+        doc = docx.Document('testing_report.docx')
         fullText = ''
         for para in doc.paragraphs:
             fullText += para.text
@@ -30,3 +27,5 @@ if __name__ == "__main__" :
     Targest2.generateReport() # Calls the generateReport 
     Targest2.generateReport2() # Calls the generateReport2 function 
     # run_tests()
+
+
